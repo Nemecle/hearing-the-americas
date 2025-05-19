@@ -56,8 +56,15 @@ foreach ($itemMedia as $media) {
 <?php endif; ?>
 <?php
 $page = $this->params()->fromQuery('page', 1);
+$perPage = 25;
 $property = $this->params()->fromQuery('property');
-$subjectValues = $item->displaySubjectValues($page, 25, $property);
+
+$options = [
+    "page" => $page,
+    "perPage" => $perPage,
+    "property" => $property,
+];
+$subjectValues = $item->displaySubjectValues($options);
 ?>
 <?php if ($subjectValues): ?>
 <div id="item-linked">
